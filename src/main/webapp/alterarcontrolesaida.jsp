@@ -115,7 +115,11 @@
                                     <div class=" mb-3 col-md-8">
                                         <label for="alterarid" class="form-label" style="color:#0B5ED7;font-weight:700; ">Código de Barras:</label>                                     
                                         <input type="number" name="idsaida"  class="form-control" id="alterarid" required value="<%= saidaAlterar.getIdSaida() %>" />
-                                    </div>                                           
+                                    </div>  
+                                     <div class=" mb-3 col-md-8">
+                                        <label for="alterardesconto" class="form-label" style="color:#0B5ED7;font-weight:700; ">Código de Barras:</label>                                     
+                                        <input type="number" name="descontocontrolesaida"  class="form-control" id="alterardescontocontrolesaida" required value="<%= saidaAlterar.getDesconto() %>" />
+                                    </div>                                            
                                     <div class="mb-3">
                                         <label for="alterarquantidade" style="color:#0B5ED7; font-weight:700;" class="form-label">Quantidade:</label>
                                         <input type="text" class="form-control" id="alterarquantidadesaida" name="quantidadesaidacontrolesaida" value="<%= saidaAlterar.getQuantidadeSaida() %>" /> 

@@ -108,7 +108,7 @@ tr td:nth-child(1) {
 						
 			<a href="InicioAlteraFornecedor?idfornecedor=<%= d.getIdfornecedor() %>" style="color:#03707d">Alterar</a>
 			<a href="ExcluirFornecedor?idfornecedor=<%= d.getIdfornecedor() %>"
-			   onclick="return confirm('Deseja excluir esse funcionário?');" style="color:#f00">Excluir</a>
+			   onclick="return confirm('Deseja excluir esse fornecedor?');" style="color:#f00">Excluir</a>
 			<a href="report"style="padding-left:4px;">Relatório</a>
 			<a href="graficoVertical" style="padding-left:4px;">Gráfico1</a>
 			<a href="graficoPie" style="padding-left:4px;">Gráfico2</a>

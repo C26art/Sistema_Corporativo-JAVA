@@ -12,27 +12,25 @@ public class LoginController {
 		return dao.buscarLogin(login, senha);
 
 	}
-	
+
 	public void cadastrar(Login l) {
 		dao.cadastrar(l);
 	}
-	
+
 	public void alterar(Login l) {
 		dao.alterar(l);
 	}
-	
-	public ArrayList<Login>listar(String nome){
+
+	public ArrayList<Login> listar(String nome) {
 		return dao.listar(nome);
 	}
-	
+
 	public void excluir(Login l) {
 		dao.excluir(l);
-	}	
-	
+	}
+
 	public Login buscar(long id) {
 		return dao.buscar(id);
 	}
 
 }
-
-

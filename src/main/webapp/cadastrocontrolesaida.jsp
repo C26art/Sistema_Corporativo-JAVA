@@ -180,7 +180,7 @@
         </li>
          <li class="nav-item">
             <a class="nav-link active" aria-current="page" style="color:#0B5ED7;font-size:20px;"
-             href="indexfornecedor">Fornecedores</a>            
+             href="indexfornecedor.jsp">Fornecedores</a>            
           </li>        
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" style="color:#0B5ED7;font-size:20px;" 
@@ -223,7 +223,11 @@
                                 <div class="mb-3">
                                   <label for="txtValor" class="form-label" style="color:#0B5ED7; font-weight:700; ">Valor:</label>
                                   <input type ="number" name="valorcontrolesaida" class="form-control" id="txtValor" required>                                      
-                              </div>                                
+                              </div> 
+                              <div class="mb-3 col-md-8">
+                                    <label for="txtDesconto" class="form-label" style="color:#0B5ED7; font-weight:700; ">Desconto:</label>
+                                    <input type ="number" name="descontocontrolesaida" maxlength="50" class="form-control" id="txtDesconto" required> 
+                                </div>                               
                                 </fieldset>                                   
                             </div>
                             <div class="col-sm-12 col-md-6">
@@ -234,9 +238,15 @@
                                     <input type ="date" name="datasaidacontrolesaida" maxlength="50" class="form-control" id="txtdataSaida" required> 
                                 </div>                                                                   
                                       <div class="mb-3 col-md-10">                                      
-                                        <label for="txtidProduto" class="form-label" style="color:#0B5ED7; font-weight:700; ">Cod Produto:</label>
-                                        <select name="idProduto" id="txtidProduto">
-                                          <option value="" disabled>Selecione a opção</option>
+                                        <label for="txtidProduto" class="form-label" style="color:#0B5ED7; font-weight:700; ">Cód Produto:</label>
+                                        <select name="idProduto" id="idProduto" autofocus>
+                                          <option value="" selected disabled>Selecione a opção</option>
+                                          <option value ="1">Shape Tron</option>
+                                          <option value ="2">Roda Sims</option>
+                                          <option value ="3">SKate Power Peralta</option>
+                                          <option value ="4">Rolamento NHBB</option>
+                                          <option value ="5">Shape Element</option>
+                                          <option value ="6">Shape Urgh</option>
                                           <% 
                                           ProdutoController controller = new ProdutoController();
                                           ArrayList<Produtos> lista = controller.listar();

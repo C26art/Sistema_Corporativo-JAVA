@@ -72,6 +72,7 @@ tr td:nth-child(1) {
 </style>
 </head>
 <body>
+
 	<a href="index.jsp"></a>
 	<section>
 		<div class="container">
@@ -84,7 +85,7 @@ tr td:nth-child(1) {
 						<th>Quantidade</th>						
 						<th>Categoria</th>
 						<th>Marca</th>						
-						<th>Valor</th>
+						<th>Valor</th>						
 						<th>Ações</th>
 					</tr>
 				</thead>
@@ -97,14 +98,15 @@ tr td:nth-child(1) {
 			<td><%= lista.get(i).getQuantidade() %></td>						
 			<td><%= lista.get(i).getCategoria() %></td>
 			<td><%= lista.get(i).getMarca() %></td>			
-			<td><%= lista.get(i).getValor() %></td>
-			<td>			
+			<td><%= lista.get(i).getValor() %></td>							
+			<td>	
+					
 			<a href="select?idProduto=<%= lista.get(i).getIdProduto() %>" style="color:#03707d">Alterar</a>
 			<a href="javascript: confirmar(<%= lista.get(i).getIdProduto() %>)" style="color:#f00">Excluir</a>
 			<a href="report"style="padding-left:4px;">Relatório</a>
 			<a href="graficoVertical" style="padding-left:4px;">Gráfico1</a>
 			<a href="graficoPie" style="padding-left:4px;">Gráfico2</a>
-			<a href="index.jsp" style="padding-left:4px;">Voltar</a>
+			<a href="cadastroproduto.jsp" style="padding-left:4px;">Voltar</a>
 			
 		</td>		
 	</tr>

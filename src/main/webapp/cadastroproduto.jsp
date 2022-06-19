@@ -175,7 +175,7 @@
         </li>
          <li class="nav-item">
             <a class="nav-link active" aria-current="page" style="color:#0B5ED7;font-size:20px;"
-             href="indexfornecedor">Fornecedores</a>            
+             href="indexfornecedor.jsp">Fornecedores</a>            
           </li>        
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" style="color:#0B5ED7;font-size:20px;" 
@@ -205,8 +205,16 @@
                                 <fieldset class="row">
                                     <legend style="color:rgb(134, 97, 97); font-weight:bold">Dados dos Produtos:</legend>
                                     <div class=" mb-3 col-md-8">
-                                        <label for="txtcodBarra" class="form-label" style="color:#0B5ED7;font-weight:700; ">Código de Barras:</label>                                     
-                                        <input type="number" name="codigobarraproduto"  class="form-control" id="txtcodBarra" required>
+                                        <label for="txtcodBarra" class="form-label" style="color:#0B5ED7;font-weight:700; ">Código Produtos:</label>                                     
+                                        <select name="idProduto" id="idProduto" autofocus>
+                                          <option value="" selected disabled>Selecione a opção</option>
+                                          <option value ="1">Shape Tron</option>
+                                          <option value ="2">Roda Sims</option>
+                                          <option value ="3">SKate Power Peralta</option>
+                                          <option value ="4">Rolamento NHBB</option>
+                                          <option value ="5">Shape Element</option>
+                                          <option value ="6">Shape Urgh</option>
+                                          </select>
                                     </div>                                           
                                     <div class="mb-3">
                                     <label for="txtNome" class="form-label" style="color:#0B5ED7; font-weight:700; ">Nome:</label>
@@ -239,6 +247,7 @@
                                           <label for="txtQuantidade" class="form-label" style="color:#0B5ED7;font-weight:700; ">Quantidade:</label>                                     
                                           <input type="number" name="quantidadeproduto"  class="form-control" id="txtQuantidade" required>
                                       </div>
+                                      
                                       
                                   <div id="time">
                                     <div class="circle" style="--clr:#0b5ed7;">

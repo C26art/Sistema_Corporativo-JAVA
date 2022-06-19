@@ -81,12 +81,16 @@ tr td:nth-child(1) {
 					<tr class="table-dark">
 						
 						
-						<th>Quantidade Saida</th>
-						<th>Data Saida</th>
-						<th>Estoque</th>						
-						<th>Código Produto</th>
-						<th>Valor</th>						
-						<th>Ações</th>
+						<th>Quantidade Saida:</th>
+						<th>Data Saida:</th>
+						<th>Estoque:</th>						
+						<th>Cód Prod:</th>
+						<th>Valor:</th>
+						<th>Desconto:</th>
+						<th>Total:</th>	
+						<th>Total_Desc:</th>
+						<th>EstoqueAtual:</th>					
+						<th>Ações:</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -114,23 +118,25 @@ tr td:nth-child(1) {
 						<td><%= saida.getQuantidadeSaida() %></td>
 						<td><%= fmtData.format (saida.getDataSaida()) %></td>
 						<td><%= saida.getEstoque() %></td>
-						<% 
+						<td><% 
                          ProdutoController controllerr = new ProdutoController();
                          ArrayList<Produtos> lista = controllerr.listar();
                          for(Produtos p: lista){
                        	%>
-						<td><%= p.getIdProduto() %></td>
+						<%= p.getIdProduto() %></td>
 						 <% } %>
 						<td><%= saida.getValor() %></td>
+						<td><%= saida.getDesconto() %></td>
+						<td><%= saida.getPreco_total() %></td>
+						<td><%= saida.getPreco_desconto() %></td>
+						<td><%= saida.getEstoque_atual() %></td>
 									
 						<td>
 						
 			<a href="InicioAlteraControleSaida?idSaida=<%= saida.getIdSaida() %>" style="color:#03707d">Alterar</a>
 			<a href="ExcluirControleSaida?idSaida=<%= saida.getIdSaida() %>"
-			   onclick="return confirm('Deseja excluir esse funcionário?');" style="color:#f00">Excluir</a>
-			<a href="report"style="padding-left:4px;">Relatório</a>
-			<a href="graficoVertical" style="padding-left:4px;">Gráfico1</a>
-			<a href="graficoPie" style="padding-left:4px;">Gráfico2</a>
+			   onclick="return confirm('Deseja excluir esse controle?');" style="color:#f00">Excluir</a>			
+			<a href="graficoVertical" style="padding-left:4px;">Gráfico1</a>			
 			<a href="cadastrocontrolesaida.jsp" style="padding-left:4px;">Voltar</a>
 			
 			</td>		

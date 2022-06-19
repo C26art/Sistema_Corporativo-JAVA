@@ -10,8 +10,9 @@ public class Produtos {
 		private String marca;
 		private String valor;
 		
+		public String getR() { return quantidade + valor; }
 		
-		
+				
 		public Produtos() {
 			super();
 			// TODO Auto-generated constructor stub
@@ -114,5 +115,6 @@ public class Produtos {
 		public void setValor(String valor) {
 			this.valor = valor;
 		}	
+		
 		
 }

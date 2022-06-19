@@ -7,17 +7,11 @@ import DAO.ControleEntradaDao;
 import model.ControleEntrada;
 import model.Fornecedor;
 
-
-
 public class ControleEntradaController {
-ControleEntDao dao = new ControleEntDao();
-	
-	public ArrayList<Fornecedor>listar(){
+	ControleEntDao dao = new ControleEntDao();
+
+	public ArrayList<Fornecedor> listar() {
 		return dao.procurarFornecedor();
 	}
-	
-	
 
 }
-
-

@@ -83,7 +83,7 @@ tr td:nth-child(1) {
 					<tr class="table-dark">
 						
 						
-						<th>Quantidade Saida</th>
+						<th>Quantidade Entrada</th>
 						<th>Data Entrada</th>
 						<th>Valor Produto</th>
 						<th>Nome Produto</th>						
@@ -117,32 +117,33 @@ tr td:nth-child(1) {
 						
 						<td><%= entrada.getQuantidadeEntrada() %></td>
 						<td><%= fmtData.format (entrada.getDataEntrada()) %></td>
+						<td><%= entrada.getValorProduto() %>
 						<td><%= entrada.getNomeProdutoEntrada() %></td>
-						<% 
+						<td><% 
                          ProdutoController controllerr = new ProdutoController();
                          ArrayList<Produtos> lista = controllerr.listar();
                          for(Produtos p: lista){
                        	%>
-						<td><%= p.getIdProduto() %></td>
+						<%= p.getIdProduto() %></td>
 						 <% } %>
 						 
-						 <% 
-                                          ControleEntradaController controlleer = new ControleEntradaController();
-                                          ArrayList<Fornecedor> procura = controlleer.listar();
-                                          for(Fornecedor f: procura){
-                                          %>
-						<td><%= f.getIdfornecedor() %></td>
+						 <td><% 
+                            ControleEntradaController controlleer = new ControleEntradaController();
+                            ArrayList<Fornecedor> procura = controlleer.listar();
+                            for(Fornecedor f: procura){
+                          %>
+						<%= f.getIdfornecedor() %></td>
 						 <% } %>
 									
 						<td>
 						
 			<a href="InicioAlteraControleEntrada?idEntrada=<%= entrada.getIdEntrada() %>" style="color:#03707d">Alterar</a>
 			<a href="ExcluirControleEntrada?idEntrada=<%= entrada.getIdEntrada() %>"
-			   onclick="return confirm('Deseja excluir esse funcionário?');" style="color:#f00">Excluir</a>
+			   onclick="return confirm('Deseja excluir esse controle?');" style="color:#f00">Excluir</a>
 			<a href="report"style="padding-left:4px;">Relatório</a>
 			<a href="graficoVertical" style="padding-left:4px;">Gráfico1</a>
 			<a href="graficoPie" style="padding-left:4px;">Gráfico2</a>
-			<a href="cadastrocontrolesaida.jsp" style="padding-left:4px;">Voltar</a>
+			<a href="cadastrocontroleentrada.jsp" style="padding-left:4px;">Voltar</a>
 			
 			</td>		
 	</tr>

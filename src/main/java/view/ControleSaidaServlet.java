@@ -49,17 +49,22 @@ public class ControleSaidaServlet extends HttpServlet {
 		String strdataSaida = request.getParameter("datasaidacontrolesaida");
 		String estoque = request.getParameter("estoquecontrolesaida");
 		String produtos = request.getParameter("idproduto");
-		String valor = request.getParameter("valorcontrolesaida");
+		String strvalor = request.getParameter("valorcontrolesaida");
+		String desconto = request.getParameter("descontocontrolesaida");
+		String preco_total = request.getParameter("precototalsaidacontrolesaida");
+		String preco_desconto = request.getParameter("precodescontocontrolesaida");
+		String estoque_atual = request.getParameter("estoqueatualcontrolesaida");
+		
 		
 		int quantidadeSaida = 0;		
-		Date dateSaida = new Date();
+		Date dateSaida = new Date();		
+		int valor = 0;	
 		
 		
 		 try {
 			 quantidadeSaida = Integer.parseInt(strquantidadeSaida);			 
-			dateSaida = new SimpleDateFormat("yyyy-MM-dd").parse(strdataSaida);
-			
-			
+			 dateSaida = new SimpleDateFormat("yyyy-MM-dd").parse(strdataSaida);			 
+			 valor = Integer.parseInt(strvalor);			
 			
 			
 		} catch (ParseException e) {
@@ -74,6 +79,10 @@ public class ControleSaidaServlet extends HttpServlet {
 		 saida.setProdutos(produto);
 		 produto.setIdProduto(produtos);
 		 saida.setValor(valor);
+		 saida.setDesconto(desconto);
+		 saida.setPreco_total(preco_total);
+		 saida.setPreco_desconto(preco_desconto);
+		 saida.setEstoque_atual(estoque_atual);
 		 saida.setDataSaida(dateSaida);
 		 
 		 ControleSaidaController controller = new ControleSaidaController();		

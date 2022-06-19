@@ -7,9 +7,8 @@ import model.Produtos;
 
 public class ProdutoController {
 	ProdutoDao dao = new ProdutoDao();
-	
-	public ArrayList<Produtos>listar(){
+
+	public ArrayList<Produtos> listar() {
 		return dao.listarProdutos();
 	}
-
 }

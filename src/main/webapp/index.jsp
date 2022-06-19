@@ -9,12 +9,13 @@
 <%@ page import="DAO.ControleSaidaDao" %>
 <%@ page import="br.com.controller.ControleSaidaController" %>
 
+
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Controle de Estoque</title>
+    <title>DashBoard</title>
    <link rel="icon" href="img/favicon.ico">
     <link rel="stylesheet" href="./css/style.css">
     <style>
@@ -465,8 +466,8 @@ color: var(--black2);
     </style>
     
 </head>
-<body>
 
+<body>
 <div>
     <div class="container">
         <div class="navigation">
@@ -520,7 +521,7 @@ color: var(--black2);
                     </a>
                 </li>
                 <li>
-                    <a href="login.jsp">
+                    <a href="end.jsp">
                         <img src="img/cadeado3.png" width="40" height="40", style="margin-top: 8px; margin-left:9px " >
                         <span class="title"> Sair </span>
                     </a>

@@ -184,7 +184,7 @@
         </li>
          <li class="nav-item">
             <a class="nav-link active" aria-current="page" style="color:#0B5ED7;font-size:20px;"
-             href="indexfornecedor">Fornecedores</a>            
+             href="indexfornecedor.jsp">Fornecedores</a>            
           </li>        
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" style="color:#0B5ED7;font-size:20px;" 
@@ -241,6 +241,12 @@
                                         <label for="txtidProduto" class="form-label" style="color:#0B5ED7; font-weight:700; ">Cod Produto:</label>
                                         <select name="idProduto" id="txtidProduto">
                                           <option value="" disabled>Selecione a opção</option>
+                                           <option value ="1">Shape Tron</option>
+                                          <option value ="2">Roda Sims</option>
+                                          <option value ="3">SKate Power Peralta</option>
+                                          <option value ="4">Rolamento NHBB</option>
+                                          <option value ="5">Shape Element</option>
+                                          <option value ="6">Shape Urgh</option>
                                           <% 
                                           ProdutoController controller = new ProdutoController();
                                           ArrayList<Produtos> lista = controller.listar();
@@ -254,6 +260,12 @@
                                         <label for="txtidfornecedor" class="form-label" style="color:#0B5ED7; font-weight:700; ">Cod Fornecedor:</label>
                                         <select name="idfornecedor" id="txtidfornecedor">
                                           <option value="" disabled>Selecione a opção</option>
+                                          <option value ="1">Marcelle Freire LTDA</option>
+                                          <option value ="2">Sims LTDA</option>
+                                          <option value ="3">Peralta LTDA</option>
+                                          <option value ="4">Cisco LTDA</option>
+                                          <option value ="5">Element LTDA</option>
+                                          <option value ="6">Brutus Distribuidora</option>
                                           <% 
                                           ControleEntradaController controlleer = new ControleEntradaController();
                                           ArrayList<Fornecedor> procura = controlleer.listar();

@@ -52,18 +52,24 @@ public class ExecutaAlteraControleSaida extends HttpServlet {
 		String strdataSaida = request.getParameter("datasaidacontrolesaida");
 		String estoque = request.getParameter("estoquecontrolesaida");
 		String produtos = request.getParameter("idprodutocontrolesaida");
-		String valor = request.getParameter("valorcontrolesaida");
+		String strvalor = request.getParameter("valorcontrolesaida");
+		String desconto = request.getParameter("descontocontrolesaida");
+		String preco_total = request.getParameter("precototalcontrolesaida");
+		String preco_desconto = request.getParameter("precodescontocontrolesaida");
+		String estoque_atual = request.getParameter("estoqueatualcontrolesaida");
 		String strid = request.getParameter("idSaida");
 
 		int quantidadeSaida = 0;
 		Date dateSaida = new Date();
 		long idSaida = 0;
+		int valor = 0;
 
 		try {
 
 			idSaida = Long.parseLong(strid);
 			quantidadeSaida = Integer.parseInt(strquantidadeSaida);
 			dateSaida = new SimpleDateFormat("yyyy-MM-dd").parse(strdataSaida);
+			valor = Integer.parseInt(strvalor);
 
 		} catch (Exception e) {
 			System.out.println("Erro na conversão");
@@ -78,6 +84,10 @@ public class ExecutaAlteraControleSaida extends HttpServlet {
 		saida.setProdutos(produto);
 		produto.setIdProduto(produtos);
 		saida.setValor(valor);
+		saida.setDesconto(desconto);
+		saida.setPreco_total(preco_total);
+		saida.setPreco_desconto(preco_desconto);
+		saida.setEstoque_atual(estoque_atual);
 		saida.setDataSaida(dateSaida);
 
 		ControleSaidaController controller = new ControleSaidaController();
