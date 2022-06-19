@@ -296,8 +296,8 @@
 
 					<button class="btn btn-success" type="submit">Cadastrar</button>
 					<button class="btn btn-primary" type="reset">Limpar</button>
-					<input type="submit" class="btn btn-warning" value="Alterar"/>
-					<input type="submit" class="btn btn-danger" value="Excluir"/>					
+					<input type="submit" class="btn btn-warning" value="Alterar"/>					
+					<a href="index.jsp" type="submit" class="btn btn-danger">DashBoard</a>					
 					 </div>                       
                       </form>			
                     </div>	
