@@ -8,19 +8,14 @@ import java.util.ArrayList;
 import model.Conexao;
 import model.Fornecedor;
 
-
-
-
-
-
 public class FornecedorDao extends Conexao {
-	
+
 	public void cadastrar(Fornecedor d) {
 		String sql = "insert into fornecedor " + "(cnpj, produto, nome, telefone, email, endereco) values "
 				+ "(?, ?, ?, ?, ?, ?)";
-		
+
 		try {
-			
+
 			PreparedStatement ps = getConexion().prepareStatement(sql);
 			ps.setString(1, d.getCnpj());
 			ps.setString(2, d.getProduto());
@@ -29,9 +24,7 @@ public class FornecedorDao extends Conexao {
 			ps.setString(5, d.getEmail());
 			ps.setString(6, d.getEndereco());
 			ps.execute();
-			
-		
-			
+
 		} catch (Exception e) {
 			System.out.println("Deu problema no Insert ");
 			e.printStackTrace();
@@ -40,7 +33,7 @@ public class FornecedorDao extends Conexao {
 		}
 
 	}
-	
+
 	public void alterar(Fornecedor d) {
 		String sql = "update fornecedor set " + "cnpj = ?, " + "produto = ?, " + "nome = ?, " + "telefone = ?, "
 				+ "email = ?, " + "endereco = ? " + "where idfornecedor =? ";
@@ -63,7 +56,7 @@ public class FornecedorDao extends Conexao {
 			fecharConexao();
 		}
 	}
-	
+
 	public ArrayList<Fornecedor> listar(String nomeBusca) {
 		ArrayList<Fornecedor> lista = new ArrayList<Fornecedor>();
 
@@ -97,57 +90,56 @@ public class FornecedorDao extends Conexao {
 		return lista;
 
 	}
-	
+
 	public Fornecedor buscar(long idfornecedor) {
 		Fornecedor fornecedor = null;
 
-String sql = "select * from fornecedor " +
-		"where idfornecedor = ? ";
+		String sql = "select * from fornecedor " + "where idfornecedor = ? ";
 
-try {
-	PreparedStatement ps = getConexion().prepareStatement(sql);
-	ps.setLong(1, idfornecedor);
-	
-	ResultSet rs = ps.executeQuery();
-	
-	if (rs.next()) {
-		fornecedor = new Fornecedor();
-		fornecedor.setIdfornecedor(rs.getLong("idfornecedor"));
-		fornecedor.setCnpj(rs.getString("cnpj"));
-		fornecedor.setProduto(rs.getString("produto"));
-		fornecedor.setNome(rs.getString("nome"));
-		fornecedor.setTelefone(rs.getString("telefone"));
-		fornecedor.setEmail(rs.getString("email"));
-		fornecedor.setEndereco(rs.getString("endereco"));					
+		try {
+			PreparedStatement ps = getConexion().prepareStatement(sql);
+			ps.setLong(1, idfornecedor);
+
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+				fornecedor = new Fornecedor();
+				fornecedor.setIdfornecedor(rs.getLong("idfornecedor"));
+				fornecedor.setCnpj(rs.getString("cnpj"));
+				fornecedor.setProduto(rs.getString("produto"));
+				fornecedor.setNome(rs.getString("nome"));
+				fornecedor.setTelefone(rs.getString("telefone"));
+				fornecedor.setEmail(rs.getString("email"));
+				fornecedor.setEndereco(rs.getString("endereco"));
+			}
+
+		} catch (SQLException e) {
+			System.out.println("Erro ao Listar");
+			e.printStackTrace();
+
+		} finally {
+			fecharConexao();
+		}
+
+		return fornecedor;
 	}
-	
-}catch (SQLException e) {
-	System.out.println("Erro ao Listar");	
-	e.printStackTrace();
-	
-}finally {
-	fecharConexao ();
-}
-							
-return fornecedor;
-	}
-	
-	public void excluir (Fornecedor d) {
+
+	public void excluir(Fornecedor d) {
 		String sql = "delete  from fornecedor where idfornecedor = ? ";
-		
+
 		try {
 			PreparedStatement ps = getConexion().prepareStatement(sql);
 			ps.setLong(1, d.getIdfornecedor());
-			
+
 			ps.execute();
-			
+
 		} catch (SQLException e) {
 			System.out.println("Erro na exclusão");
 			e.printStackTrace();
-			
-		}finally {
+
+		} finally {
 			fecharConexao();
 		}
 	}
-			
+
 }

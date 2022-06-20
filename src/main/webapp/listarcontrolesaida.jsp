@@ -136,7 +136,7 @@ tr td:nth-child(1) {
 			<a href="InicioAlteraControleSaida?idSaida=<%= saida.getIdSaida() %>" style="color:#03707d">Alterar</a>
 			<a href="ExcluirControleSaida?idSaida=<%= saida.getIdSaida() %>"
 			   onclick="return confirm('Deseja excluir esse controle?');" style="color:#f00">Excluir</a>			
-			<a href="graficoVertical" style="padding-left:4px;">Gráfico1</a>			
+			<a href="graficoVertical" style="padding-left:4px;">Gráfico1</a>						
 			<a href="cadastrocontrolesaida.jsp" style="padding-left:4px;">Voltar</a>
 			
 			</td>		

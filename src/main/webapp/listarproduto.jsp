@@ -103,7 +103,7 @@ tr td:nth-child(1) {
 					
 			<a href="select?idProduto=<%= lista.get(i).getIdProduto() %>" style="color:#03707d">Alterar</a>
 			<a href="javascript: confirmar(<%= lista.get(i).getIdProduto() %>)" style="color:#f00">Excluir</a>
-			<a href="report"style="padding-left:4px;">Relatório</a>
+			<a href="Relatorio"style="padding-left:4px;">Relatório</a>
 			<a href="graficoVertical" style="padding-left:4px;">Gráfico1</a>
 			<a href="graficoPie" style="padding-left:4px;">Gráfico2</a>
 			<a href="cadastroproduto.jsp" style="padding-left:4px;">Voltar</a>

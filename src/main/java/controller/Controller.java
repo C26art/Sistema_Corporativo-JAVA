@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.jasper.tagplugins.jstl.core.Out;
+
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
@@ -39,7 +41,7 @@ public class Controller extends HttpServlet {
 	 */
 	public Controller() {
 		super();
-		
+
 	}
 
 	/**
@@ -89,7 +91,7 @@ public class Controller extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("listarproduto.jsp");
 		rd.forward(request, response);
 	}
-	
+
 	/**
 	 * Adicionar cadastro.
 	 *
@@ -102,14 +104,14 @@ public class Controller extends HttpServlet {
 			throws ServletException, IOException {
 		cadastro.setNome(request.getParameter("nomeproduto"));
 		cadastro.setDescricao(request.getParameter("descricaoproduto"));
-		cadastro.setQuantidade(request.getParameter("quantidadeproduto"));		
-		cadastro.setCategoria(request.getParameter("categoriaproduto"));		
+		cadastro.setQuantidade(request.getParameter("quantidadeproduto"));
+		cadastro.setCategoria(request.getParameter("categoriaproduto"));
 		cadastro.setMarca(request.getParameter("marcaproduto"));
 		cadastro.setValor(request.getParameter("valorproduto"));
 		dao.inserirCadastro(cadastro);
-		response.sendRedirect("main");	
+		response.sendRedirect("main");
 	}
-	
+
 	/**
 	 * Listar cadastro.
 	 *
@@ -126,14 +128,14 @@ public class Controller extends HttpServlet {
 		request.setAttribute("idProduto", cadastro.getIdProduto());
 		request.setAttribute("nome", cadastro.getNome());
 		request.setAttribute("descricao", cadastro.getDescricao());
-		request.setAttribute("quantidade", cadastro.getQuantidade());		
-		request.setAttribute("categoria", cadastro.getCategoria());		
+		request.setAttribute("quantidade", cadastro.getQuantidade());
+		request.setAttribute("categoria", cadastro.getCategoria());
 		request.setAttribute("marca", cadastro.getMarca());
 		request.setAttribute("valor", cadastro.getValor());
 		RequestDispatcher rd = request.getRequestDispatcher("alterarproduto.jsp");
 		rd.forward(request, response);
 	}
-	
+
 	/**
 	 * Editar cadastro.
 	 *
@@ -147,14 +149,14 @@ public class Controller extends HttpServlet {
 		cadastro.setIdProduto(request.getParameter("idProduto"));
 		cadastro.setNome(request.getParameter("nome"));
 		cadastro.setDescricao(request.getParameter("descricao"));
-		cadastro.setQuantidade(request.getParameter("quantidade"));		
-		cadastro.setCategoria(request.getParameter("categoria"));		
+		cadastro.setQuantidade(request.getParameter("quantidade"));
+		cadastro.setCategoria(request.getParameter("categoria"));
 		cadastro.setMarca(request.getParameter("marca"));
 		cadastro.setValor(request.getParameter("valor"));
 		dao.alterarCadastro(cadastro);
 		response.sendRedirect("main");
 	}
-	
+
 	/**
 	 * Remover cadastro.
 	 *
@@ -187,8 +189,8 @@ public class Controller extends HttpServlet {
 		Font BOLD_UNDERLINED = new Font(FontFamily.TIMES_ROMAN, 12, Font.BOLD | Font.UNDERLINE);
 		Font NORMAL = new Font(FontFamily.TIMES_ROMAN, 12);
 
-		Font tamanho = new Font(FontFamily.TIMES_ROMAN, 8,Font.BOLD, BaseColor.BLUE);
-		
+		Font tamanho = new Font(FontFamily.TIMES_ROMAN, 8, Font.BOLD, BaseColor.BLUE);
+
 		try {
 			response.setContentType("apllication/pdf");
 			response.addHeader("Content-Disposition", "inline; filename=" + "cadastros.pdf");
@@ -209,18 +211,18 @@ public class Controller extends HttpServlet {
 			imgTitulo.setBorderWidth(10);
 			imgTitulo.setBorderColor(BaseColor.WHITE);
 			imgTitulo.scaleToFit(1000, 72);
-			documento.add(imgTitulo);			
+			documento.add(imgTitulo);
 			documento.add(new Paragraph(" "));
 			documento.add(new Paragraph(" "));
 			documento.add(new Paragraph(" "));
-			PdfPTable tabela = new PdfPTable(new float[] {4,4,2,2,3,2});
+			PdfPTable tabela = new PdfPTable(new float[] { 4, 4, 2, 2, 3, 2 });
 			tabela.setWidthPercentage(100);
 			tabela.setHorizontalAlignment(Element.ALIGN_CENTER);
-			
+
 			PdfPCell col1 = new PdfPCell(new Paragraph("Nome", tamanho));
 			PdfPCell col2 = new PdfPCell(new Paragraph("Descrição", tamanho));
-			PdfPCell col3 = new PdfPCell(new Paragraph("Quantidade", tamanho));			
-			PdfPCell col4 = new PdfPCell(new Paragraph("Categoria", tamanho));			
+			PdfPCell col3 = new PdfPCell(new Paragraph("Quantidade", tamanho));
+			PdfPCell col4 = new PdfPCell(new Paragraph("Categoria", tamanho));
 			PdfPCell col5 = new PdfPCell(new Paragraph("Marca", tamanho));
 			PdfPCell col6 = new PdfPCell(new Paragraph("Valor", tamanho));
 			tabela.addCell(col1);
@@ -229,19 +231,19 @@ public class Controller extends HttpServlet {
 			tabela.addCell(col4);
 			tabela.addCell(col5);
 			tabela.addCell(col6);
-			
+
 			ArrayList<Produtos> lista = dao.listarCadastro();
 			for (int i = 0; i < lista.size(); i++) {
 				tabela.addCell(lista.get(i).getNome());
 				tabela.addCell(lista.get(i).getDescricao());
-				tabela.addCell(lista.get(i).getQuantidade());				
+				tabela.addCell(lista.get(i).getQuantidade());
 				tabela.addCell(lista.get(i).getCategoria());
-				tabela.addCell(lista.get(i).getMarca());				
+				tabela.addCell(lista.get(i).getMarca());
 				tabela.addCell(lista.get(i).getValor());
 			}
 			documento.add(tabela);
 			documento.close();
-			
+
 		} catch (Exception e) {
 			System.out.println(e);
 			documento.close();

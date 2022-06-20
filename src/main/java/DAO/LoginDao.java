@@ -36,19 +36,17 @@ public class LoginDao extends Conexao {
 		}
 		return usr;
 	}
-	
+
 	public void cadastrar(Login l) {
-		String sql = "insert into funcionariolog " + "(nome, login, senha) values "
-				+ "(?, ?, ?)";
+		String sql = "insert into funcionariolog " + "(nome, login, senha) values " + "(?, ?, ?)";
 
 		try {
 
 			PreparedStatement ps = getConexion().prepareStatement(sql);
 			ps.setString(1, l.getNome());
 			ps.setString(2, l.getLogin());
-			ps.setString(3, l.getSenha());			
+			ps.setString(3, l.getSenha());
 			ps.execute();
-		
 
 		} catch (SQLException e) {
 			System.out.println("Deu problema no Insert ");
@@ -59,108 +57,102 @@ public class LoginDao extends Conexao {
 		}
 
 	}
-		
-		public void alterar(Login l) {
-			String sql = "update funcionariolog set " + "nome = ?, " + "login = ?, " + "senha = ? " +  "where id =? ";
-			try {
-				PreparedStatement ps = getConexion().prepareStatement(sql);
-				ps.setString(1, l.getNome());
-				ps.setString(2, l.getLogin());
-				ps.setString(3, l.getSenha());				
-				ps.setLong(4, l.getId());
-				ps.execute();
 
-			} catch (SQLException e) {
-				System.out.println("Erro no Update");
-				e.printStackTrace();
+	public void alterar(Login l) {
+		String sql = "update funcionariolog set " + "nome = ?, " + "login = ?, " + "senha = ? " + "where id =? ";
+		try {
+			PreparedStatement ps = getConexion().prepareStatement(sql);
+			ps.setString(1, l.getNome());
+			ps.setString(2, l.getLogin());
+			ps.setString(3, l.getSenha());
+			ps.setLong(4, l.getId());
+			ps.execute();
 
-			} finally {
-				fecharConexao();
-			}		
+		} catch (SQLException e) {
+			System.out.println("Erro no Update");
+			e.printStackTrace();
+
+		} finally {
+			fecharConexao();
 		}
-		
-		public ArrayList<Login> listar(String nomeBusca) {
-			ArrayList<Login> lista = new ArrayList<Login>();
+	}
 
-			String sql = "select * from funcionariolog " + "where nome like? " + "order by nome";
-			try {
-				PreparedStatement ps = getConexion().prepareStatement(sql);
-				ps.setString(1, "%" + nomeBusca + "%");
+	public ArrayList<Login> listar(String nomeBusca) {
+		ArrayList<Login> lista = new ArrayList<Login>();
 
-				ResultSet rs = ps.executeQuery();
-				Login l;
-				while (rs.next()) {
-					l = new Login();
-					l.setId(rs.getLong("id"));
-					l.setNome(rs.getString("nome"));
-					l.setLogin(rs.getString("login"));
-					l.setSenha(rs.getString("senha"));					
-					lista.add(l);
-				}
+		String sql = "select * from funcionariolog " + "where nome like? " + "order by nome";
+		try {
+			PreparedStatement ps = getConexion().prepareStatement(sql);
+			ps.setString(1, "%" + nomeBusca + "%");
 
-			} catch (SQLException e) {
-				System.out.println("Erro ao Listar");
-				e.printStackTrace();
-
-			} finally {
-				fecharConexao();
+			ResultSet rs = ps.executeQuery();
+			Login l;
+			while (rs.next()) {
+				l = new Login();
+				l.setId(rs.getLong("id"));
+				l.setNome(rs.getString("nome"));
+				l.setLogin(rs.getString("login"));
+				l.setSenha(rs.getString("senha"));
+				lista.add(l);
 			}
 
-			return lista;
+		} catch (SQLException e) {
+			System.out.println("Erro ao Listar");
+			e.printStackTrace();
+
+		} finally {
+			fecharConexao();
 		}
-		
-		public void excluir (Login l) {
-			String sql = "delete  from funcionariolog where id = ? ";
-			
-			try {
-				PreparedStatement ps = getConexion().prepareStatement(sql);
-				ps.setLong(1, l.getId());
-				
-				ps.execute();
-				
-			} catch (SQLException e) {
-				System.out.println("Erro na exclusão");
-				e.printStackTrace();
-				
-			}finally {
-				fecharConexao();
+
+		return lista;
+	}
+
+	public void excluir(Login l) {
+		String sql = "delete  from funcionariolog where id = ? ";
+
+		try {
+			PreparedStatement ps = getConexion().prepareStatement(sql);
+			ps.setLong(1, l.getId());
+
+			ps.execute();
+
+		} catch (SQLException e) {
+			System.out.println("Erro na exclusão");
+			e.printStackTrace();
+
+		} finally {
+			fecharConexao();
+		}
+	}
+
+	public Login buscar(long id) {
+		Login login = null;
+
+		String sql = "select * from funcionariolog " + "where id = ? ";
+
+		try {
+			PreparedStatement ps = getConexion().prepareStatement(sql);
+			ps.setLong(1, id);
+
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+				login = new Login();
+				login.setId(rs.getLong("id"));
+				login.setNome(rs.getString("nome"));
+				login.setLogin(rs.getString("login"));
+				login.setSenha(rs.getString("senha"));
 			}
-		}
-		
-		public Login buscar(long id) {
-			Login login = null;
 
-	String sql = "select * from funcionariolog " +
-			"where id = ? ";
+		} catch (SQLException e) {
+			System.out.println("Erro ao Listar");
+			e.printStackTrace();
 
-	try {
-		PreparedStatement ps = getConexion().prepareStatement(sql);
-		ps.setLong(1, id);
-		
-		ResultSet rs = ps.executeQuery();
-		
-		if (rs.next()) {
-			login = new Login();
-			login.setId(rs.getLong("id"));
-			login.setNome(rs.getString("nome"));
-			login.setLogin(rs.getString("login"));
-			login.setSenha(rs.getString("senha"));								
+		} finally {
+			fecharConexao();
 		}
-		
-	}catch (SQLException e) {
-		System.out.println("Erro ao Listar");	
-		e.printStackTrace();
-		
-	}finally {
-		fecharConexao ();
+
+		return login;
 	}
-								
-	return login;
-		}
-				
-	}
-		
-		
-	
 
-
+}

@@ -13,7 +13,7 @@ public class ControleSaida {
 	private String preco_total;
 	private String preco_desconto;
 	private String estoque_atual;
-	
+
 	public ControleSaida() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -112,6 +112,6 @@ public class ControleSaida {
 
 	public void setEstoque_atual(String estoque_atual) {
 		this.estoque_atual = estoque_atual;
-	}	
-	
+	}
+
 }

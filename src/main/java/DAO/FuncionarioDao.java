@@ -33,7 +33,7 @@ public class FuncionarioDao extends Conexao {
 		}
 
 	}
-	
+
 	public void alterar(Funcionarios f) {
 		String sql = "update funcionario set " + "nome = ?, " + "cpf = ?, " + "email = ?, " + "endereco = ?, "
 				+ "telefone = ?, " + "sexo = ? " + "where id =? ";
@@ -56,7 +56,7 @@ public class FuncionarioDao extends Conexao {
 			fecharConexao();
 		}
 	}
-	
+
 	public ArrayList<Funcionarios> listar(String nomeBusca) {
 		ArrayList<Funcionarios> lista = new ArrayList<Funcionarios>();
 
@@ -90,59 +90,56 @@ public class FuncionarioDao extends Conexao {
 		return lista;
 
 	}
-	
+
 	public Funcionarios buscar(long id) {
 		Funcionarios funcionario = null;
 
-String sql = "select * from funcionario " +
-		"where id = ? ";
+		String sql = "select * from funcionario " + "where id = ? ";
 
-try {
-	PreparedStatement ps = getConexion().prepareStatement(sql);
-	ps.setLong(1, id);
-	
-	ResultSet rs = ps.executeQuery();
-	
-	if (rs.next()) {
-		funcionario = new Funcionarios();
-		funcionario.setId(rs.getLong("id"));
-		funcionario.setNome(rs.getString("nome"));
-		funcionario.setCpf(rs.getString("cpf"));
-		funcionario.setEmail(rs.getString("email"));
-		funcionario.setEndereco(rs.getString("endereco"));
-		funcionario.setTelefone(rs.getString("telefone"));
-		funcionario.setSexo(rs.getString("sexo"));					
+		try {
+			PreparedStatement ps = getConexion().prepareStatement(sql);
+			ps.setLong(1, id);
+
+			ResultSet rs = ps.executeQuery();
+
+			if (rs.next()) {
+				funcionario = new Funcionarios();
+				funcionario.setId(rs.getLong("id"));
+				funcionario.setNome(rs.getString("nome"));
+				funcionario.setCpf(rs.getString("cpf"));
+				funcionario.setEmail(rs.getString("email"));
+				funcionario.setEndereco(rs.getString("endereco"));
+				funcionario.setTelefone(rs.getString("telefone"));
+				funcionario.setSexo(rs.getString("sexo"));
+			}
+
+		} catch (SQLException e) {
+			System.out.println("Erro ao Listar");
+			e.printStackTrace();
+
+		} finally {
+			fecharConexao();
+		}
+
+		return funcionario;
 	}
-	
-}catch (SQLException e) {
-	System.out.println("Erro ao Listar");	
-	e.printStackTrace();
-	
-}finally {
-	fecharConexao ();
-}
-							
-return funcionario;
-	}
-	
-	public void excluir (Funcionarios f) {
+
+	public void excluir(Funcionarios f) {
 		String sql = "delete  from funcionario where id = ? ";
-		
+
 		try {
 			PreparedStatement ps = getConexion().prepareStatement(sql);
 			ps.setLong(1, f.getId());
-			
+
 			ps.execute();
-			
+
 		} catch (SQLException e) {
 			System.out.println("Erro na exclusão");
 			e.printStackTrace();
-			
-		}finally {
+
+		} finally {
 			fecharConexao();
 		}
 	}
-			
+
 }
-
-

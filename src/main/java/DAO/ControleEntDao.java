@@ -8,39 +8,32 @@ import java.util.ArrayList;
 import model.Conexao;
 import model.Fornecedor;
 
-
-public class ControleEntDao extends Conexao{
-	public ArrayList<Fornecedor> procurarFornecedor(){
+public class ControleEntDao extends Conexao {
+	public ArrayList<Fornecedor> procurarFornecedor() {
 
 		ArrayList<Fornecedor> procura = new ArrayList<Fornecedor>();
 		Fornecedor f = null;
 		String sql = "SELECT idfornecedor, nome FROM fornecedor";
-		try{
+		try {
 			PreparedStatement ps = getConexion().prepareStatement(sql);
-			
 
 			ResultSet rs = ps.executeQuery();
 
-			while (rs.next()){
+			while (rs.next()) {
 				f = new Fornecedor();
 				f.setIdfornecedor(rs.getLong(1));
 				f.setNome(rs.getString(2));
 
 				procura.add(f);
 			}
-		
-		}catch (SQLException e) {
+
+		} catch (SQLException e) {
 			e.printStackTrace();
 
-
-
-		}finally{
+		} finally {
 			fecharConexao();
 		}
 		return procura;
 	}
 
 }
-
-
-

@@ -12,13 +12,12 @@ import model.ControleSaida;
 import model.Produtos;
 import model.DAO;
 
-
-
 public class ControleSaidaDao extends Conexao {
 
 	public void cadastrar(ControleSaida saida) {
 
-		String sql = "insert into controle_saida " + "(quantidadeSaida, dataSaida, estoque, idProduto, valor, desconto, preco_total, preco_desconto, estoque_atual) values "
+		String sql = "insert into controle_saida "
+				+ "(quantidadeSaida, dataSaida, estoque, idProduto, valor, desconto, preco_total, preco_desconto, estoque_atual) values "
 				+ "( ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		try {
@@ -32,7 +31,7 @@ public class ControleSaidaDao extends Conexao {
 			ps.setString(7, saida.getPreco_total());
 			ps.setString(8, saida.getPreco_desconto());
 			ps.setString(9, saida.getEstoque_atual());
-			
+
 			ps.executeUpdate();
 
 		} catch (Exception e) {
@@ -42,9 +41,11 @@ public class ControleSaidaDao extends Conexao {
 			fecharConexao();
 		}
 	}
+
 	public void alterar(ControleSaida saida) {
 		String sql = "update controle_saida set " + "quantidadeSaida = ?, " + "dataSaida = ?, " + "estoque = ?, "
-				+ "idProduto = ?, " + "valor = ?, " + "desconto = ?, " + "preco_total = ?, " + "preco_desconto = ?, " + "estoque_atual = ? " + "where idSaida =? ";
+				+ "idProduto = ?, " + "valor = ?, " + "desconto = ?, " + "preco_total = ?, " + "preco_desconto = ?, "
+				+ "estoque_atual = ? " + "where idSaida =? ";
 
 		try {
 			PreparedStatement ps = getConexion().prepareStatement(sql);
@@ -68,11 +69,12 @@ public class ControleSaidaDao extends Conexao {
 			fecharConexao();
 		}
 	}
+
 	public ArrayList<ControleSaida> listar() {
 		ArrayList<ControleSaida> lista = new ArrayList<ControleSaida>();
 
 		try {
-			String sql =  "select * from controle_saida ";
+			String sql = "select * from controle_saida ";
 			PreparedStatement ps = getConexion().prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 
@@ -90,7 +92,7 @@ public class ControleSaidaDao extends Conexao {
 				saida.setPreco_desconto(rs.getString("preco_desconto"));
 				saida.setEstoque_atual(rs.getString("estoque_atual"));
 				produto = new Produtos();
-				produto.setIdProduto(rs.getString("idProduto"));				
+				produto.setIdProduto(rs.getString("idProduto"));
 				saida.setProdutos(produto);
 
 				lista.add(saida);
@@ -105,13 +107,13 @@ public class ControleSaidaDao extends Conexao {
 		}
 		return lista;
 	}
+
 	public ControleSaida buscar(long idSaida) {
 
 		ControleSaida saida = null;
 		Produtos produto = null;
 
-		String sql = "select * from controle_saida " +
-				"where idSaida = ? ";
+		String sql = "select * from controle_saida " + "where idSaida = ? ";
 		try {
 			PreparedStatement ps = getConexion().prepareStatement(sql);
 			ps.setLong(1, idSaida);
@@ -130,7 +132,7 @@ public class ControleSaidaDao extends Conexao {
 				saida.setEstoque_atual(rs.getString("estoque_atual"));
 
 				produto = new Produtos();
-				produto.setIdProduto(rs.getString("idProduto"));								
+				produto.setIdProduto(rs.getString("idProduto"));
 				saida.setProdutos(produto);
 			}
 
@@ -144,6 +146,7 @@ public class ControleSaidaDao extends Conexao {
 
 		return saida;
 	}
+
 	public void excluir(ControleSaida saida) {
 		String sql = "delete  from controle_saida where idSaida = ? ";
 

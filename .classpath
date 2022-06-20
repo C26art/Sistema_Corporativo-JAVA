@@ -16,6 +16,6 @@
 	<classpathentry kind="lib" path="C:/Program Files/Java/jfreechart-1.5.3.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/Java/jcommon-1.0.23.jar"/>
 	<classpathentry kind="lib" path="C:/Program Files/Java/mysql-connector-java-8.0.28.jar"/>
-	<classpathentry kind="lib" path="C:/Program Files/Java/Lib/itextpdf-5.5.13.1.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/Java/itextpdf-5.5.13.1/itextpdf-5.5.13.1.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

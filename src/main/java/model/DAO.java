@@ -81,77 +81,79 @@ public class DAO {
 			return null;
 		}
 	}
-		
-		/**
-		 * Selecionar cadastro.
-		 *
-		 * @param cadastro the cadastro
-		 */
-		public void selecionarCadastro(Produtos cadastro) {
-			String read2 = "select * from produto where idProduto = ?";
-			try {
-				Connection con = conectar();
-				PreparedStatement pst = con.prepareStatement(read2);
-				pst.setString(1, cadastro.getIdProduto());
-				ResultSet rs = pst.executeQuery();
-				while (rs.next()) {
-					cadastro.setIdProduto(rs.getString(1));
-					cadastro.setNome(rs.getString(2));
-					cadastro.setDescricao(rs.getString(3));
-					cadastro.setQuantidade(rs.getString(4));
-					cadastro.setCategoria(rs.getString(5));
-					cadastro.setMarca(rs.getString(6));
-					cadastro.setValor(rs.getString(7));
-				}
-				con.close();
 
-			} catch (Exception e) {
-				System.out.println(e);
-		}		
-	}
-		/**
-		 * Alterar cadastro.
-		 *
-		 * @param cadastro the cadastro
-		 */
-		public void alterarCadastro(Produtos cadastro) {
-			String update = "update produto set nome=?,descricao=?,quantidade=?,categoria=?,marca=?,valor=? where idProduto=?";
-			try {
-
-				Connection con = conectar();
-				PreparedStatement pst = con.prepareStatement(update);
-				pst.setString(1, cadastro.getNome());
-				pst.setString(2, cadastro.getDescricao());
-				pst.setString(3, cadastro.getQuantidade());
-				pst.setString(4, cadastro.getCategoria());
-				pst.setString(5, cadastro.getMarca());
-				pst.setString(6, cadastro.getValor());
-				pst.setString(7, cadastro.getIdProduto());
-				pst.executeUpdate();
-				con.close();
-
-			} catch (Exception e) {
-				System.out.println(e);
+	/**
+	 * Selecionar cadastro.
+	 *
+	 * @param cadastro the cadastro
+	 */
+	public void selecionarCadastro(Produtos cadastro) {
+		String read2 = "select * from produto where idProduto = ?";
+		try {
+			Connection con = conectar();
+			PreparedStatement pst = con.prepareStatement(read2);
+			pst.setString(1, cadastro.getIdProduto());
+			ResultSet rs = pst.executeQuery();
+			while (rs.next()) {
+				cadastro.setIdProduto(rs.getString(1));
+				cadastro.setNome(rs.getString(2));
+				cadastro.setDescricao(rs.getString(3));
+				cadastro.setQuantidade(rs.getString(4));
+				cadastro.setCategoria(rs.getString(5));
+				cadastro.setMarca(rs.getString(6));
+				cadastro.setValor(rs.getString(7));
 			}
-		}
-		/**
-		 * Deletar cadastro.
-		 *
-		 * @param cadastro the cadastro
-		 */
-		public void deletarCadastro(Produtos cadastro) {
-			String delete = "delete from produto where idProduto=?";
+			con.close();
 
-			try {
-				Connection con = conectar();
-				PreparedStatement pst = con.prepareStatement(delete);
-				pst.setString(1, cadastro.getIdProduto());
-				pst.executeUpdate();
-				con.close();
-
-			} catch (Exception e) {
-				System.out.println(e);
-			}
-
+		} catch (Exception e) {
+			System.out.println(e);
 		}
 	}
+
+	/**
+	 * Alterar cadastro.
+	 *
+	 * @param cadastro the cadastro
+	 */
+	public void alterarCadastro(Produtos cadastro) {
+		String update = "update produto set nome=?,descricao=?,quantidade=?,categoria=?,marca=?,valor=? where idProduto=?";
+		try {
+
+			Connection con = conectar();
+			PreparedStatement pst = con.prepareStatement(update);
+			pst.setString(1, cadastro.getNome());
+			pst.setString(2, cadastro.getDescricao());
+			pst.setString(3, cadastro.getQuantidade());
+			pst.setString(4, cadastro.getCategoria());
+			pst.setString(5, cadastro.getMarca());
+			pst.setString(6, cadastro.getValor());
+			pst.setString(7, cadastro.getIdProduto());
+			pst.executeUpdate();
+			con.close();
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+
+	/**
+	 * Deletar cadastro.
+	 *
+	 * @param cadastro the cadastro
+	 */
+	public void deletarCadastro(Produtos cadastro) {
+		String delete = "delete from produto where idProduto=?";
+
+		try {
+			Connection con = conectar();
+			PreparedStatement pst = con.prepareStatement(delete);
+			pst.setString(1, cadastro.getIdProduto());
+			pst.executeUpdate();
+			con.close();
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+	}
+}
