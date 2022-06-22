@@ -49,9 +49,8 @@ public class ExecutaAlteraControleSaida extends HttpServlet {
 		// TODO Auto-generated method stub
 		// doGet(request, response);
 		String strquantidadeSaida = request.getParameter("quantidadesaidacontrolesaida");
-		String strdataSaida = request.getParameter("datasaidacontrolesaida");
-		String estoque = request.getParameter("estoquecontrolesaida");
-		String produtos = request.getParameter("idprodutocontrolesaida");
+		String dataSaida = request.getParameter("datasaidacontrolesaida");
+		String estoque = request.getParameter("estoquecontrolesaida");		
 		String strvalor = request.getParameter("valorcontrolesaida");
 		String desconto = request.getParameter("descontocontrolesaida");
 		String preco_total = request.getParameter("precototalcontrolesaida");
@@ -59,16 +58,14 @@ public class ExecutaAlteraControleSaida extends HttpServlet {
 		String estoque_atual = request.getParameter("estoqueatualcontrolesaida");
 		String strid = request.getParameter("idSaida");
 
-		int quantidadeSaida = 0;
-		Date dateSaida = new Date();
+		int quantidadeSaida = 0;		
 		long idSaida = 0;
 		int valor = 0;
 
 		try {
 
 			idSaida = Long.parseLong(strid);
-			quantidadeSaida = Integer.parseInt(strquantidadeSaida);
-			dateSaida = new SimpleDateFormat("yyyy-MM-dd").parse(strdataSaida);
+			quantidadeSaida = Integer.parseInt(strquantidadeSaida);			
 			valor = Integer.parseInt(strvalor);
 
 		} catch (Exception e) {
@@ -76,19 +73,17 @@ public class ExecutaAlteraControleSaida extends HttpServlet {
 		}
 
 		Produtos produto = new Produtos();
-		produto.setIdProduto(produtos);
+		
 		ControleSaida saida = new ControleSaida();
 		saida.setIdSaida(idSaida);
 		saida.setQuantidadeSaida(quantidadeSaida);
-		saida.setEstoque(estoque);
-		saida.setProdutos(produto);
-		produto.setIdProduto(produtos);
+		saida.setEstoque(estoque);			
 		saida.setValor(valor);
 		saida.setDesconto(desconto);
 		saida.setPreco_total(preco_total);
 		saida.setPreco_desconto(preco_desconto);
 		saida.setEstoque_atual(estoque_atual);
-		saida.setDataSaida(dateSaida);
+		saida.setDataSaida(dataSaida);
 
 		ControleSaidaController controller = new ControleSaidaController();
 		controller.alterar(saida);

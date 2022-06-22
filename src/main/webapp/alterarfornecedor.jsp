@@ -106,7 +106,7 @@
     <div class="container">
 		<div class="row">
 			<div class="cold-md-7">				
-					<h3 style="color: #0B5ED7; text-decoration: underline; text-align:center; font-weight:700; text-transform: uppercase; padding-top:20px">Formulário Alterar Funcionários</h3>	
+					<h3 style="color: #0B5ED7; text-decoration: underline; text-align:center; font-weight:700; text-transform: uppercase; padding-top:20px">Formulário Alterar Fornecedores</h3>	
 				<hr>
 				<form class="form" method="post" action="ExecutaAlteraFornecedor">
 				<div class="row">                           
@@ -137,7 +137,7 @@
                                       </div>
                                       </div>
                                       <div class="mb-3 col-md-8">
-                                        <label for="alterarproduto" style="color:#0B5ED7; font-weight:700;" class="form-label">Sexo:</label>	
+                                        <label for="alterarproduto" style="color:#0B5ED7; font-weight:700;" class="form-label">Nome Produto:</label>	
 					<input type="text" class="form-control" id="alterarproduto" name="produtofornecedor" value="<%= fornecedorAlterar.getProduto() %>" /> 
                                     </div>
                                         <div class=" mb-3 col-md-4">

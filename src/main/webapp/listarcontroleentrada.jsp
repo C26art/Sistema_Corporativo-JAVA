@@ -31,10 +31,11 @@ section {
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
-	font-family: 'Tapestry', cursive;
-	background: url(../img/Background1.png);
+	font-family: "Open Sans", sans-serif;
+	background: url(../img/explore2.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
+	font-weight: 600;
 }
 
 .container {
@@ -64,12 +65,12 @@ th {
 tr th:nth-child(1) {
 	width: 60px;
 	text-align: center;
-	background: #03707d;
+	background:#122b53;
 }
 
 tr td:nth-child(1) {
 	text-align: center;
-	background: #0B5ED7;
+	background: #f28123;
 	color: #fff;
 }
 </style>
@@ -139,7 +140,7 @@ tr td:nth-child(1) {
 						
 			<a href="InicioAlteraControleEntrada?idEntrada=<%= entrada.getIdEntrada() %>" style="color:#03707d">Alterar</a>
 			<a href="ExcluirControleEntrada?idEntrada=<%= entrada.getIdEntrada() %>"
-			   onclick="return confirm('Deseja excluir esse controle?');" style="color:#f00">Excluir</a>
+			   onclick="return confirm('Deseja excluir o controle de entrada?');" style="color:#f00">Excluir</a>
 			<a href="report"style="padding-left:4px;">Relatório</a>
 			<a href="graficoVertical" style="padding-left:4px;">Gráfico1</a>
 			<a href="graficoPie" style="padding-left:4px;">Gráfico2</a>

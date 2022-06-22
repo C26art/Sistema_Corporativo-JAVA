@@ -206,15 +206,15 @@
                                     <legend style="color:rgb(134, 97, 97); font-weight:bold">Dados dos Produtos:</legend>
                                     <div class=" mb-3 col-md-8">
                                         <label for="txtcodBarra" class="form-label" style="color:#0B5ED7;font-weight:700; ">Código Produtos:</label>                                     
-                                        <select name="idProduto" id="idProduto" autofocus>
-                                          <option value="" selected disabled>Selecione a opção</option>
+                                        <select name="idProduto" id="idProduto" onChange=" atualizouSelect()" autofocus>
+        								  <option value="0" selected disabled>Selecione o Produto</option>
                                           <option value ="1">Shape Tron</option>
                                           <option value ="2">Roda Sims</option>
                                           <option value ="3">SKate Power Peralta</option>
                                           <option value ="4">Rolamento NHBB</option>
                                           <option value ="5">Shape Element</option>
                                           <option value ="6">Shape Urgh</option>
-                                          </select>
+    								   </select>
                                     </div>                                           
                                     <div class="mb-3">
                                     <label for="txtNome" class="form-label" style="color:#0B5ED7; font-weight:700; ">Nome:</label>
@@ -223,7 +223,13 @@
                                 <div class="mb-3">
                                   <label for="txtValor" class="form-label" style="color:#0B5ED7; font-weight:700; ">Valor:</label>
                                   <input type ="number" name="valorproduto" class="form-control" id="txtValor" required>                                      
-                              </div>                                
+                              </div>  
+                               <div class="mb-3 col-md-4">
+                                        <label for="txtCategoria" class="form-label" style="color:#0B5ED7; font-weight:700; ">Categoria:</label>
+                                        <div class="input-group">
+                                            <input type ="text" name="categoriaproduto" maxlength="50" class="form-control" id="txtCategoria">                                    
+                                      </div>
+                                      </div>                              
                                 </fieldset>                                   
                             </div>
                             <div class="col-sm-12 col-md-6">
@@ -233,12 +239,7 @@
                                     <label for="txtDescricao" class="form-label" style="color:#0B5ED7; font-weight:700; ">Descrição</label>
                                     <input type ="text" name="descricaoproduto" maxlength="50" class="form-control" id="txtDescricao" required> 
                                 </div>                                
-                                    <div class="mb-3 col-md-4">
-                                        <label for="txtCategoria" class="form-label" style="color:#0B5ED7; font-weight:700; ">Categoria:</label>
-                                        <div class="input-group">
-                                            <input type ="text" name="categoriaproduto" maxlength="50" class="form-control" id="txtCategoria">                                    
-                                      </div>
-                                      </div>
+                                   
                                       <div class="mb-3 col-md-10">
                                         <label for="txtMarca" class="form-label" style="color:#0B5ED7; font-weight:700; ">Marca:</label>
                                         <input type ="text" name="marcaproduto" maxlength="50" class="form-control" id="txtMarca" required> 
@@ -301,6 +302,19 @@
         }
 
     </script>
+    
+    <script>  
+        function atualizouSelect(){
+            let select = document.querySelector('#idProduto');
+            let optionValue = select.options[select.selectedIndex];
+
+            let value = optionValue.value;
+            let text = optionValue.text;
+            console.log(value, text)
+        }
+            atualizouSelect()
+    </script>
+    
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
  integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>		
  

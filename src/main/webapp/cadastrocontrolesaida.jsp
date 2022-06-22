@@ -239,8 +239,8 @@
                                 </div>                                                                   
                                       <div class="mb-3 col-md-10">                                      
                                         <label for="txtidProduto" class="form-label" style="color:#0B5ED7; font-weight:700; ">Cód Produto:</label>
-                                        <select name="idProduto" id="idProduto" autofocus>
-                                          <option value="" selected disabled>Selecione a opção</option>
+                                        <select name="idProduto" id="idProduto" onChange=" atualizouSelect()" autofocus>
+                                          <option value="0" selected disabled>Selecione o Produto</option>
                                           <option value ="1">Shape Tron</option>
                                           <option value ="2">Roda Sims</option>
                                           <option value ="3">SKate Power Peralta</option>
@@ -305,7 +305,7 @@
                     
                     
 		
-<script>
+	<script>
         const icon = document.querySelector('.icon');
         const search = document.querySelector('.search');
         icon.onclick = function(){
@@ -313,6 +313,22 @@
         }
 
     </script>
+    
+    <script>
+    function atualizouSelect(){
+        let select = document.querySelector('#idProduto');
+        let optionValue = select.options[select.selectedIndex];
+
+        let value = optionValue.value;
+        let text = optionValue.text;
+
+
+        console.log(value, text)
+    }
+        atualizouSelect()
+
+</script>
+    
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
  integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>		
  

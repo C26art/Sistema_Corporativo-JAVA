@@ -24,10 +24,11 @@ section {
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
-	font-family: 'Tapestry', cursive;
-	background: url(../img/Background1.png);
+	font-family: "Open Sans", sans-serif;
+	background: url(../img/explore2.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
+	font-weight: 600;
 }
 
 .container {
@@ -57,12 +58,12 @@ th {
 tr th:nth-child(1) {
 	width: 60px;
 	text-align: center;
-	background: #03707d;
+	background:#122b53;
 }
 
 tr td:nth-child(1) {
 	text-align: center;
-	background: #0B5ED7;
+	background: #f28123;
 	color: #fff;
 }
 </style>

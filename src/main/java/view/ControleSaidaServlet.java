@@ -46,9 +46,9 @@ public class ControleSaidaServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String strquantidadeSaida = request.getParameter("quantidadesaidacontrolesaida");
-		String strdataSaida = request.getParameter("datasaidacontrolesaida");
+		String dataSaida = request.getParameter("datasaidacontrolesaida");
 		String estoque = request.getParameter("estoquecontrolesaida");
-		String produtos = request.getParameter("idproduto");
+		String idProduto = request.getParameter("idproduto");
 		String strvalor = request.getParameter("valorcontrolesaida");
 		String desconto = request.getParameter("descontocontrolesaida");
 		String preco_total = request.getParameter("precototalsaidacontrolesaida");
@@ -56,34 +56,31 @@ public class ControleSaidaServlet extends HttpServlet {
 		String estoque_atual = request.getParameter("estoqueatualcontrolesaida");
 		
 		
-		int quantidadeSaida = 0;		
-		Date dateSaida = new Date();		
+		int quantidadeSaida = 0;			
 		int valor = 0;	
 		
 		
 		 try {
-			 quantidadeSaida = Integer.parseInt(strquantidadeSaida);			 
-			 dateSaida = new SimpleDateFormat("yyyy-MM-dd").parse(strdataSaida);			 
+			 quantidadeSaida = Integer.parseInt(strquantidadeSaida);								 
 			 valor = Integer.parseInt(strvalor);			
 			
 			
-		} catch (ParseException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		 Produtos produto = new Produtos();
-		 produto.setIdProduto(produtos);
+		
 		 ControleSaida saida = new ControleSaida();
 		 saida.setQuantidadeSaida(quantidadeSaida);
 		 saida.setEstoque(estoque);
-		 saida.setProdutos(produto);
-		 produto.setIdProduto(produtos);
+		 saida.setIdProduto(idProduto);		
 		 saida.setValor(valor);
 		 saida.setDesconto(desconto);
 		 saida.setPreco_total(preco_total);
 		 saida.setPreco_desconto(preco_desconto);
 		 saida.setEstoque_atual(estoque_atual);
-		 saida.setDataSaida(dateSaida);
+		 saida.setDataSaida(dataSaida);
 		 
 		 ControleSaidaController controller = new ControleSaidaController();		
 		 controller.cadastrar(saida);

@@ -23,9 +23,9 @@ public class ControleSaidaDao extends Conexao {
 		try {
 			PreparedStatement ps = getConexion().prepareStatement(sql);
 			ps.setInt(1, saida.getQuantidadeSaida());
-			ps.setDate(2, new Date(saida.getDataSaida().getTime()));
+			ps.setString(2, saida.getDataSaida());
 			ps.setString(3, saida.getEstoque());
-			ps.setString(4, saida.getProdutos().getIdProduto());
+			ps.setString(4, saida.getIdProduto());
 			ps.setInt(5, saida.getValor());
 			ps.setString(6, saida.getDesconto());
 			ps.setString(7, saida.getPreco_total());
@@ -50,15 +50,14 @@ public class ControleSaidaDao extends Conexao {
 		try {
 			PreparedStatement ps = getConexion().prepareStatement(sql);
 			ps.setInt(1, saida.getQuantidadeSaida());
-			ps.setDate(2, new Date(saida.getDataSaida().getTime()));
-			ps.setString(3, saida.getEstoque());
-			ps.setString(4, saida.getProdutos().getIdProduto());
-			ps.setInt(5, saida.getValor());
-			ps.setString(6, saida.getDesconto());
-			ps.setString(7, saida.getPreco_total());
-			ps.setString(8, saida.getPreco_desconto());
-			ps.setString(9, saida.getEstoque_atual());
-			ps.setLong(10, saida.getIdSaida());
+			ps.setString(2, saida.getDataSaida());
+			ps.setString(3, saida.getEstoque());			
+			ps.setInt(4, saida.getValor());
+			ps.setString(5, saida.getDesconto());
+			ps.setString(6, saida.getPreco_total());
+			ps.setString(7, saida.getPreco_desconto());
+			ps.setString(8, saida.getEstoque_atual());
+			ps.setLong(9, saida.getIdSaida());
 			ps.executeUpdate();
 
 		} catch (SQLException e) {
@@ -84,7 +83,7 @@ public class ControleSaidaDao extends Conexao {
 				saida = new ControleSaida();
 				saida.setIdSaida(rs.getLong("idSaida"));
 				saida.setQuantidadeSaida(rs.getInt("quantidadeSaida"));
-				saida.setDataSaida(rs.getDate("dataSaida"));
+				saida.setDataSaida(rs.getString("dataSaida"));
 				saida.setEstoque(rs.getString("estoque"));
 				saida.setValor(rs.getInt("valor"));
 				saida.setDesconto(rs.getString("desconto"));
@@ -93,7 +92,7 @@ public class ControleSaidaDao extends Conexao {
 				saida.setEstoque_atual(rs.getString("estoque_atual"));
 				produto = new Produtos();
 				produto.setIdProduto(rs.getString("idProduto"));
-				saida.setProdutos(produto);
+				saida.setIdProduto(rs.getString("idProduto"));
 
 				lista.add(saida);
 			}
@@ -123,7 +122,7 @@ public class ControleSaidaDao extends Conexao {
 				saida = new ControleSaida();
 				saida.setIdSaida(rs.getLong("idSaida"));
 				saida.setQuantidadeSaida(rs.getInt("quantidadeSaida"));
-				saida.setDataSaida(rs.getDate("dataSaida"));
+				saida.setDataSaida(rs.getString("dataSaida"));
 				saida.setEstoque(rs.getString("estoque"));
 				saida.setValor(rs.getInt("valor"));
 				saida.setDesconto(rs.getString("desconto"));
@@ -133,7 +132,7 @@ public class ControleSaidaDao extends Conexao {
 
 				produto = new Produtos();
 				produto.setIdProduto(rs.getString("idProduto"));
-				saida.setProdutos(produto);
+				saida.setIdProduto(rs.getString("idProduto"));
 			}
 
 		} catch (SQLException e) {

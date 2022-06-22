@@ -5,28 +5,28 @@ import java.util.Date;
 public class ControleSaida {
 	private long idSaida;
 	private int quantidadeSaida;
-	private Date dataSaida;
+	private String dataSaida;
 	private String estoque;
-	private Produtos produtos;
+	private String idProduto;
 	private int valor;
 	private String desconto;
 	private String preco_total;
 	private String preco_desconto;
 	private String estoque_atual;
-
+	
 	public ControleSaida() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public ControleSaida(long idSaida, int quantidadeSaida, Date dataSaida, String estoque, Produtos produtos,
+	public ControleSaida(long idSaida, int quantidadeSaida, String dataSaida, String estoque, String idProduto,
 			int valor, String desconto, String preco_total, String preco_desconto, String estoque_atual) {
 		super();
 		this.idSaida = idSaida;
 		this.quantidadeSaida = quantidadeSaida;
 		this.dataSaida = dataSaida;
 		this.estoque = estoque;
-		this.produtos = produtos;
+		this.idProduto = idProduto;
 		this.valor = valor;
 		this.desconto = desconto;
 		this.preco_total = preco_total;
@@ -50,11 +50,11 @@ public class ControleSaida {
 		this.quantidadeSaida = quantidadeSaida;
 	}
 
-	public Date getDataSaida() {
+	public String getDataSaida() {
 		return dataSaida;
 	}
 
-	public void setDataSaida(Date dataSaida) {
+	public void setDataSaida(String dataSaida) {
 		this.dataSaida = dataSaida;
 	}
 
@@ -66,12 +66,12 @@ public class ControleSaida {
 		this.estoque = estoque;
 	}
 
-	public Produtos getProdutos() {
-		return produtos;
+	public String getIdProduto() {
+		return idProduto;
 	}
 
-	public void setProdutos(Produtos produtos) {
-		this.produtos = produtos;
+	public void setIdProduto(String idProduto) {
+		this.idProduto = idProduto;
 	}
 
 	public int getValor() {
@@ -112,6 +112,6 @@ public class ControleSaida {
 
 	public void setEstoque_atual(String estoque_atual) {
 		this.estoque_atual = estoque_atual;
-	}
-
+	}	
+	
 }

@@ -200,7 +200,7 @@
                                 <fieldset class="row">
                                     <legend style="color:rgb(134, 97, 97); font-weight:bold">Dados dos Fornecedores:</legend>
                                     <div class=" mb-3 col-md-8">
-                                        <label for="txtProduto" class="form-label" style="color:#0B5ED7;font-weight:700; ">Produto:</label>                                     
+                                        <label for="txtProduto" class="form-label" style="color:#0B5ED7;font-weight:700; ">Cód Produto:</label>                                     
                                         <input type="number" name="produtofornecedor"  class="form-control" id="txtProduto" required>
                                     </div>                                           
                                     <div class="mb-3">
