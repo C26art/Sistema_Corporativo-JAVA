@@ -153,10 +153,7 @@
           
  </style>
  
-</head>	 
-
-
-
+</head>	
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light">
   <div class="container-fluid">
@@ -211,7 +208,7 @@
                         <div class="row">                           
                             <div class="col-sm-12 col-md-6">
                                 <fieldset class="row">
-                                    <legend style="color:rgb(134, 97, 97); font-weight:bold">Dados Saida Produtos:</legend>
+                                    <legend style="color:#f28123; font-weight:bold">Dados Saida Produtos:</legend>
                                     <div class=" mb-3 col-md-8">
                                         <label for="txtcodBarra" class="form-label" style="color:#0B5ED7;font-weight:700; ">Código de Barras:</label>                                     
                                         <input type="number" name="codigobarracontrolesaida"  class="form-control" id="txtcodBarra" required>
@@ -232,21 +229,22 @@
                             </div>
                             <div class="col-sm-12 col-md-6">
                                 <fieldset class="row">
-								    <legend style="color:rgb(134, 97, 97); font-weight:bold">Sobre a Saida Produto:</legend>
+								    <legend style="color:#f28123; font-weight:bold">Sobre a Saida Produto:</legend>
 								 <div class="mb-3 col-md-8">
                                     <label for="txtDataSaida" class="form-label" style="color:#0B5ED7; font-weight:700; ">Data Saida:</label>
                                     <input type ="date" name="datasaidacontrolesaida" maxlength="50" class="form-control" id="txtdataSaida" required> 
                                 </div>                                                                   
                                       <div class="mb-3 col-md-10">                                      
                                         <label for="txtidProduto" class="form-label" style="color:#0B5ED7; font-weight:700; ">Cód Produto:</label>
-                                        <select name="idProduto" id="idProduto" onChange=" atualizouSelect()" autofocus>
-                                          <option value="0" selected disabled>Selecione o Produto</option>
+                                        <select name="idProduto" id="idProduto" onChange="update()">
+        								  <option value="0" selected disabled>Selecione o Produto</option>
                                           <option value ="1">Shape Tron</option>
                                           <option value ="2">Roda Sims</option>
-                                          <option value ="3">SKate Power Peralta</option>
+                                          <option value ="3">SKate Powell Peralta</option>
                                           <option value ="4">Rolamento NHBB</option>
                                           <option value ="5">Shape Element</option>
-                                          <option value ="6">Shape Urgh</option>
+                                          <option value ="6">Shape Urgh</option>	   
+                                   
                                           <% 
                                           ProdutoController controller = new ProdutoController();
                                           ArrayList<Produtos> lista = controller.listar();
@@ -254,7 +252,9 @@
                                           %>
                                           <option value="<%= p.getIdProduto() %>"> <%= p.getNome() %> </option>
                                           <% } %>
-                                        </select>                                                                      
+                                        </select> 
+                                        <input type="text" id="value">
+									   <input type="text" id="text">                                                                     
                                     </div>
                                         <div class=" mb-3 col-md-8">
                                           <label for="txtQuantidade" class="form-label" style="color:#0B5ED7;font-weight:700; ">Quantidade:</label>                                     
@@ -270,7 +270,7 @@
                                         </svg>
                                         <div id="hours">00</div>
                                     </div>
-                                    <div class="circle" style="--clr:#87c120;">
+                                    <div class="circle" style="--clr:#f28123;">
                                         <div class="dots min_dot"></div>
                                         <svg>
                                             <circle cx="50" cy="50" r="50"></circle>
@@ -314,20 +314,17 @@
 
     </script>
     
-    <script>
-    function atualizouSelect(){
-        let select = document.querySelector('#idProduto');
-        let optionValue = select.options[select.selectedIndex];
+    <script type="text/javascript">
+			function update() {
+				var select = document.getElementById('idProduto');
+				var option = select.options[select.selectedIndex];
 
-        let value = optionValue.value;
-        let text = optionValue.text;
+				document.getElementById('value').value = option.value;
+				document.getElementById('text').value = option.text;
+			}
 
-
-        console.log(value, text)
-    }
-        atualizouSelect()
-
-</script>
+			update();
+		</script>
     
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
  integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>		

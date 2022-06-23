@@ -198,7 +198,7 @@
                         <div class="row">                           
                             <div class="col-sm-12 col-md-6">
                                 <fieldset class="row">
-                                    <legend style="color:rgb(134, 97, 97); font-weight:bold">Dados dos Funcionários:</legend>
+                                    <legend style="color:#f28123; font-weight:bold">Dados dos Funcionários:</legend>
                                     <div class=" mb-3 col-md-8">
                                         <label for="txtcodFuncionario" class="form-label" style="color:#0B5ED7;font-weight:700; ">Código do Funcionário:</label>                                     
                                         <input type="number" name="codigofuncionario"  class="form-control" id="txtcodFuncionario" required>
@@ -215,7 +215,7 @@
                             </div>
                             <div class="col-sm-12 col-md-6">
                                 <fieldset class="row">
-								                   <legend style="color:rgb(134, 97, 97); font-weight:bold">Sobre o Funcionário:</legend>
+								                   <legend style="color:#f28123; font-weight:bold">Sobre o Funcionário:</legend>
                                   <div class="mb-3 col-md-8">
                                     <label for="txtEmail" class="form-label" style="color:#0B5ED7; font-weight:700; ">Email</label>
                                     <input type ="text" name="emailfuncionario" maxlength="50" class="form-control" id="txtEmail" required> 
@@ -253,7 +253,7 @@
                                         </svg>
                                         <div id="minutes">00</div>
                                     </div>
-                                    <div class="circle" style="--clr:#fee800;">
+                                    <div class="circle" style="--clr:#f28123;">
                                         <div class="dots sec_dot"></div>
                                         <svg>
                                             <circle cx="50" cy="50" r="50"></circle>

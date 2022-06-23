@@ -48,15 +48,13 @@ public class ExecutaAlteraControleSaida extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// doGet(request, response);
+		String strid = request.getParameter("idSaida");
 		String strquantidadeSaida = request.getParameter("quantidadesaidacontrolesaida");
 		String dataSaida = request.getParameter("datasaidacontrolesaida");
 		String estoque = request.getParameter("estoquecontrolesaida");		
 		String strvalor = request.getParameter("valorcontrolesaida");
-		String desconto = request.getParameter("descontocontrolesaida");
-		String preco_total = request.getParameter("precototalcontrolesaida");
-		String preco_desconto = request.getParameter("precodescontocontrolesaida");
-		String estoque_atual = request.getParameter("estoqueatualcontrolesaida");
-		String strid = request.getParameter("idSaida");
+		String desconto = request.getParameter("descontocontrolesaida");	
+		
 
 		int quantidadeSaida = 0;		
 		long idSaida = 0;
@@ -79,10 +77,7 @@ public class ExecutaAlteraControleSaida extends HttpServlet {
 		saida.setQuantidadeSaida(quantidadeSaida);
 		saida.setEstoque(estoque);			
 		saida.setValor(valor);
-		saida.setDesconto(desconto);
-		saida.setPreco_total(preco_total);
-		saida.setPreco_desconto(preco_desconto);
-		saida.setEstoque_atual(estoque_atual);
+		saida.setDesconto(desconto);		
 		saida.setDataSaida(dataSaida);
 
 		ControleSaidaController controller = new ControleSaidaController();

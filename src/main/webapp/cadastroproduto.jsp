@@ -13,7 +13,8 @@
  integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
  <link rel="icon" href="img/favicon.ico">
- <link rel="stylesheet" href="./css/estilo.css">  
+ <link rel="stylesheet" href="./css/estilo.css"> 
+ 			     			
  
  <script>
                   setInterval(( ) =>{
@@ -58,14 +59,14 @@
                   sec_dot.style.transform = ` rotate(${s * 6}deg) `;
             }) 
             
-          </script>
+          </script>          
           
           <style>
           /* Relógio*/
  #time{
     display: flex;
     gap: 20px;
-    color: #677eff;
+    color: #2c4a7a;
 }
 #time .circle{
     position: relative;
@@ -145,17 +146,81 @@
     border-bottom: 1px solid rgb(235, 202, 140);
  } 
  
-          
- </style>
+ .box{
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+.box::before{
+    content: '';
+    position: absolute;
+    inset: -4px  24px;
+    background: linear-gradient(315deg, #0B5ED7,#0B5ED7);
+    transition: 0.5s;
+    animation: animate 4s linear infinite;
+}
+.box:hover::before{
+    inset: -8px  0px;
+}
+@keyframes animate{
+    0%{
+        transform: rotate(360deg);
+    }
+    100%{
+        transform: rotate(0deg);
+    }
+}
+.box::after{
+    content: '';
+    position: absolute;
+    inset: 4px;
+    background: #FFF;
+    border-radius: 50%;
+    z-index: 1;   
+}
+.content{
+    position: absolute;
+    inset: 12px;
+    border: 6px solid #f28123;
+    z-index: 3;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.content img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+    pointer-events: none;
+    z-index: 3;
+}
+.box:hover .content img{
+    opacity: 0;
+}
+
+ </style> 
  
 </head>	 
 
-
-
 <body>
+
 	<nav class="navbar navbar-expand-lg navbar-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="cadastroproduto.jsp"><img id="logo" src="img/Logo.png" width="130" height="90"></a>
+    <a class="navbar-brand" href="cadastroproduto.jsp"><div class="box">
+        <div class="content">
+            <img src="img/Logo.png">           
+        </div>
+    </div></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -203,18 +268,20 @@
                         <div class="row">                           
                             <div class="col-sm-12 col-md-6">
                                 <fieldset class="row">
-                                    <legend style="color:rgb(134, 97, 97); font-weight:bold">Dados dos Produtos:</legend>
+                                    <legend style="color:#f28123; font-weight:bold">Dados dos Produtos:</legend>
                                     <div class=" mb-3 col-md-8">
                                         <label for="txtcodBarra" class="form-label" style="color:#0B5ED7;font-weight:700; ">Código Produtos:</label>                                     
-                                        <select name="idProduto" id="idProduto" onChange=" atualizouSelect()" autofocus>
+                                        <select name="idProduto" id="idProduto" onChange="update()">
         								  <option value="0" selected disabled>Selecione o Produto</option>
                                           <option value ="1">Shape Tron</option>
                                           <option value ="2">Roda Sims</option>
-                                          <option value ="3">SKate Power Peralta</option>
+                                          <option value ="3">SKate Powell Peralta</option>
                                           <option value ="4">Rolamento NHBB</option>
                                           <option value ="5">Shape Element</option>
                                           <option value ="6">Shape Urgh</option>
     								   </select>
+    								   <input type="text" id="value">
+									   <input type="text" id="text">
                                     </div>                                           
                                     <div class="mb-3">
                                     <label for="txtNome" class="form-label" style="color:#0B5ED7; font-weight:700; ">Nome:</label>
@@ -234,7 +301,7 @@
                             </div>
                             <div class="col-sm-12 col-md-6">
                                 <fieldset class="row">
-								                   <legend style="color:rgb(134, 97, 97); font-weight:bold">Sobre o Produto:</legend>
+								                   <legend style="color:#f28123; font-weight:bold">Sobre o Produto:</legend>
                                   <div class="mb-3 col-md-8">
                                     <label for="txtDescricao" class="form-label" style="color:#0B5ED7; font-weight:700; ">Descrição</label>
                                     <input type ="text" name="descricaoproduto" maxlength="50" class="form-control" id="txtDescricao" required> 
@@ -259,7 +326,7 @@
                                         </svg>
                                         <div id="hours">00</div>
                                     </div>
-                                    <div class="circle" style="--clr:#87c120;">
+                                    <div class="circle" style="--clr:#f28123;">
                                         <div class="dots min_dot"></div>
                                         <svg>
                                             <circle cx="50" cy="50" r="50"></circle>
@@ -267,7 +334,7 @@
                                         </svg>
                                         <div id="minutes">00</div>
                                     </div>
-                                    <div class="circle" style="--clr:#fee800;">
+                                    <div class="circle" style="--clr:rgb(247, 57, 57);">
                                         <div class="dots sec_dot"></div>
                                         <svg>
                                             <circle cx="50" cy="50" r="50"></circle>
@@ -290,8 +357,8 @@
 					 </div>                       
                       </form>			
                     </div>	
-                  </div>
-                    
+                  </div>          
+                                   
                     
 		
 <script>
@@ -303,17 +370,19 @@
 
     </script>
     
-    <script>  
-        function atualizouSelect(){
-            let select = document.querySelector('#idProduto');
-            let optionValue = select.options[select.selectedIndex];
+    <script type="text/javascript">
+			function update() {
+				var select = document.getElementById('idProduto');
+				var option = select.options[select.selectedIndex];
 
-            let value = optionValue.value;
-            let text = optionValue.text;
-            console.log(value, text)
-        }
-            atualizouSelect()
-    </script>
+				document.getElementById('value').value = option.value;
+				document.getElementById('text').value = option.text;
+			}
+
+			update();
+		</script>		
+		
+    
     
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
  integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>		

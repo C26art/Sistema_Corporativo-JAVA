@@ -44,7 +44,7 @@ public class ControleSaidaDao extends Conexao {
 
 	public void alterar(ControleSaida saida) {
 		String sql = "update controle_saida set " + "quantidadeSaida = ?, " + "dataSaida = ?, " + "estoque = ?, "
-				+ "idProduto = ?, " + "valor = ?, " + "desconto = ?, " + "preco_total = ?, " + "preco_desconto = ?, "
+				+ "valor = ?, " + "desconto = ?, " + "preco_total = ?, " + "preco_desconto = ?, "
 				+ "estoque_atual = ? " + "where idSaida =? ";
 
 		try {
@@ -89,10 +89,7 @@ public class ControleSaidaDao extends Conexao {
 				saida.setDesconto(rs.getString("desconto"));
 				saida.setPreco_total(rs.getString("preco_total"));
 				saida.setPreco_desconto(rs.getString("preco_desconto"));
-				saida.setEstoque_atual(rs.getString("estoque_atual"));
-				produto = new Produtos();
-				produto.setIdProduto(rs.getString("idProduto"));
-				saida.setIdProduto(rs.getString("idProduto"));
+				saida.setEstoque_atual(rs.getString("estoque_atual"));				
 
 				lista.add(saida);
 			}
@@ -130,9 +127,7 @@ public class ControleSaidaDao extends Conexao {
 				saida.setPreco_desconto(rs.getString("preco_desconto"));
 				saida.setEstoque_atual(rs.getString("estoque_atual"));
 
-				produto = new Produtos();
-				produto.setIdProduto(rs.getString("idProduto"));
-				saida.setIdProduto(rs.getString("idProduto"));
+				
 			}
 
 		} catch (SQLException e) {
